@@ -92,7 +92,7 @@ spec:
           subPath: entrypoint.sh
 
       containers:
-      - image: nvidia/container-toolkit:1.0.2-ubi8 
+      - image: benswinney/container-toolkit:1.0.2-ubi8-ppc64le
         command: ["/bin/entrypoint.sh"]
         env:
         - name: RUNTIME_ARGS

@@ -40,7 +40,7 @@ data:
     #!/bin/bash -x
 
     # Enable EUS and try to install kernel-devel and kernel-headers 
-    dnf -y --enablerepo=rhel-8-for-x86_64-baseos-eus-rpms --releasever=8.2 install \ 
+    dnf -y --enablerepo=rhel-8-for-ppc64le-baseos-eus-rpms --releasever=8.2 install \ 
     kernel-devel-$(uname -r) kernel-headers-$(uname -r) kernel-core-$(uname -r)
 
     # If EUS fails get kernel-devel and kernel-headers from machine-os-content

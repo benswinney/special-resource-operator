@@ -7,8 +7,8 @@ spec:
   driverContainer:
     source:
       git:
-        ref: "master"
-        uri: "https://gitlab.com/nvidia/driver.git"
+        ref: "ppc64le_support"
+        uri: "https://gitlab.com/benswinney/driver.git"
     buildArgs: 
     - name: "DRIVER_VERSION"
       value: "440.64.00"
