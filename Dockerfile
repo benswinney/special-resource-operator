@@ -1,9 +1,9 @@
-FROM openshift/origin-release:golang-1.13 AS builder
+FROM ppc64le/golang:1.13 AS builder
 WORKDIR /go/src/github.com/openshift-psap/special-resource-operator
 COPY . .
 RUN GO111MODULE=on make build
 
-FROM openshift/origin-base
+FROM openshift-release-dev/ocp-release:4.5.5-ppc64le
 COPY --from=builder /go/src/github.com/openshift-psap/special-resource-operator/special-resource-operator /usr/bin/
 
 RUN useradd special-resource-operator
