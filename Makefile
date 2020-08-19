@@ -1,7 +1,7 @@
 SPECIALRESOURCE  ?= nvidia-gpu
 
-REGISTRY         ?= quay.io
-ORG              ?= openshift-psap
+REGISTRY         ?= docker.io
+ORG              ?= benswinney
 TAG              ?= $(shell git branch | grep \* | cut -d ' ' -f2)
 IMAGE            ?= $(REGISTRY)/$(ORG)/special-resource-operator:$(TAG)
 NAMESPACE        ?= openshift-sro
@@ -17,8 +17,9 @@ MAIN_PACKAGE      = $(PACKAGE)/cmd/manager
 DOCKERFILE        = Dockerfile
 ENVVAR            = GOOS=linux CGO_ENABLED=0
 GOOS              = linux
+GOARCH			  = ppc64le
 GO111MODULE       = auto
-GO_BUILD_RECIPE   = GO111MODULE=$(GO111MODULE) GOOS=$(GOOS) go build -mod=vendor -o $(BIN) $(MAIN_PACKAGE)
+GO_BUILD_RECIPE   = GO111MODULE=$(GO111MODULE) GOOS=$(GOOS) GOARCH=$(GOARCH) go build -mod=vendor -o $(BIN) $(MAIN_PACKAGE)
 
 TEST_RESOURCES  = $(shell mktemp -d)/test-init.yaml
 
