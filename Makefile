@@ -2,7 +2,8 @@ SPECIALRESOURCE  ?= nvidia-gpu
 
 REGISTRY         ?= docker.io
 ORG              ?= benswinney
-TAG              ?= $(shell git branch | grep \* | cut -d ' ' -f2)
+#TAG              ?= $(shell git branch | grep \* | cut -d ' ' -f2)
+TAG              ?= ppc64le
 IMAGE            ?= $(REGISTRY)/$(ORG)/special-resource-operator:$(TAG)
 NAMESPACE        ?= openshift-sro
 PULLPOLICY       ?= IfNotPresent
@@ -12,7 +13,7 @@ DEPLOY_NAMESPACE  = namespace.yaml
 DEPLOY_OBJECTS    = service_account.yaml role.yaml role_binding.yaml operator.yaml
 DEPLOY_CRD        = crds/sro.openshift.io_specialresources_crd.yaml 
 
-PACKAGE           = github.com/openshift-psap/special-resource-operator
+PACKAGE           = github.com/benswinney/special-resource-operator
 MAIN_PACKAGE      = $(PACKAGE)/cmd/manager
 DOCKERFILE        = Dockerfile
 ENVVAR            = GOOS=linux CGO_ENABLED=0
